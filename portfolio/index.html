@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adarsh Wankar | Software Developer & Mobile Application Engineer</title>
+    <meta name="description" content="Portfolio of Adarsh Wankar - Electronics & Telecommunication graduate (2025) & CDAC Sunbeam PG Diploma candidate (Mobile Computing). Skilled in Java, Spring Boot, Kotlin, Android, React, Node.js, and Python NLP.">
+    <meta name="keywords" content="Adarsh Wankar, Software Developer, Java Developer, Spring Boot, Android Developer, Kotlin, CDAC Sunbeam, SGGSIE&T, Portfolio, Mobile Application Development">
+    <meta name="author" content="Adarsh Wankar">
+
+    <!-- Open Graph / Social Meta -->
+    <meta property="og:title" content="Adarsh Wankar | Software Developer & Mobile Application Engineer">
+    <meta property="og:description" content="Building high-performance Java Spring Boot backends, Android applications, and full-stack web systems.">
+    <meta property="og:type" content="website">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        cyanGlow: '#00f0ff',
+                        blueGlow: '#0070f3',
+                        darkBg: '#050811',
+                        cardBg: 'rgba(13, 20, 36, 0.75)'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-[#050811] text-gray-100 min-h-screen relative overflow-x-hidden selection:bg-cyan-500 selection:text-black">
+
+    <!-- Interactive Canvas Particle Background -->
+    <canvas id="particleCanvas" class="fixed inset-0 pointer-events-none z-0 opacity-40"></canvas>
+
+    <!-- Cyberpunk Grid Overlay -->
+    <div class="fixed inset-0 grid-bg opacity-20 pointer-events-none z-0"></div>
+
+    <!-- Navigation Header -->
+    <header class="fixed top-0 w-full z-50 bg-[#050811]/85 backdrop-blur-md border-b border-cyan-500/20 shadow-lg">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Brand Logo -->
+            <a href="#home" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center font-bold text-black text-xl brand-font shadow-[0_0_15px_rgba(0,240,255,0.4)] group-hover:scale-105 transition-transform">
+                    AW
+                </div>
+                <div class="flex flex-col">
+                    <span class="brand-font text-lg font-bold tracking-wider text-white group-hover:text-cyan-400 transition-colors">ADARSH WANKAR</span>
+                    <span class="text-[10px] text-cyan-400/80 tracking-widest uppercase">Software Developer</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden lg:flex items-center space-x-7 text-sm font-semibold tracking-wide">
+                <a href="#home" class="nav-link text-gray-300 hover:text-cyan-400 transition-colors">Home</a>
+                <a href="#about" class="nav-link text-gray-300 hover:text-cyan-400 transition-colors">About</a>
+                <a href="#projects" class="nav-link text-gray-300 hover:text-cyan-400 transition-colors">Projects</a>
+                <a href="#skills" class="nav-link text-gray-300 hover:text-cyan-400 transition-colors">Skills</a>
+                <a href="#education" class="nav-link text-gray-300 hover:text-cyan-400 transition-colors">Education</a>
+                <a href="#achievements" class="nav-link text-gray-300 hover:text-cyan-400 transition-colors">Achievements</a>
+                <a href="#contact" class="nav-link text-gray-300 hover:text-cyan-400 transition-colors">Contact</a>
+            </nav>
+
+            <!-- CTA Button -->
+            <div class="hidden lg:flex items-center gap-4">
+                <button onclick="openContactModal()" class="px-5 py-2 text-sm font-bold text-black bg-cyan-400 hover:bg-cyan-300 rounded-full shadow-[0_0_20px_rgba(0,240,255,0.4)] hover:shadow-[0_0_25px_rgba(0,240,255,0.7)] transition-all duration-300 transform hover:-translate-y-0.5">
+                    Let's Connect
+                </button>
+            </div>
+
+            <!-- Mobile Hamburger Button -->
+            <button class="lg:hidden text-cyan-400 p-2 focus:outline-none" onclick="toggleMobileMenu()" aria-label="Toggle Navigation">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobileMenu" class="fixed inset-x-0 top-[73px] bg-[#090d1a]/95 backdrop-blur-xl border-b border-cyan-500/30 z-40 hidden lg:hidden shadow-2xl transition-all duration-300">
+        <div class="flex flex-col space-y-3 px-6 py-6 font-semibold text-sm">
+            <a href="#home" class="nav-link text-gray-200 hover:text-cyan-400 py-2 border-b border-gray-800" onclick="toggleMobileMenu()">Home</a>
+            <a href="#about" class="nav-link text-gray-200 hover:text-cyan-400 py-2 border-b border-gray-800" onclick="toggleMobileMenu()">About</a>
+            <a href="#projects" class="nav-link text-gray-200 hover:text-cyan-400 py-2 border-b border-gray-800" onclick="toggleMobileMenu()">Projects</a>
+            <a href="#skills" class="nav-link text-gray-200 hover:text-cyan-400 py-2 border-b border-gray-800" onclick="toggleMobileMenu()">Skills</a>
+            <a href="#education" class="nav-link text-gray-200 hover:text-cyan-400 py-2 border-b border-gray-800" onclick="toggleMobileMenu()">Education</a>
+            <a href="#achievements" class="nav-link text-gray-200 hover:text-cyan-400 py-2 border-b border-gray-800" onclick="toggleMobileMenu()">Achievements</a>
+            <a href="#contact" class="nav-link text-gray-200 hover:text-cyan-400 py-2 border-b border-gray-800" onclick="toggleMobileMenu()">Contact</a>
+            <button onclick="toggleMobileMenu(); openContactModal();" class="w-full py-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-black font-bold rounded-lg text-center shadow-lg">
+                Get In Touch
+            </button>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen pt-32 pb-20 px-6 flex items-center justify-center relative z-10">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-12 gap-12 items-center">
+            
+            <!-- Hero Left Text Content -->
+            <div class="md:col-span-7 space-y-6 text-center md:text-left">
+                <!-- Location & Status Badge -->
+                <div class="inline-flex flex-wrap items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-950/60 border border-cyan-500/30 text-cyan-300 text-xs font-semibold uppercase tracking-wider backdrop-blur-sm shadow-[0_0_15px_rgba(0,240,255,0.15)]">
+                    <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+                    <span>Chandrapur, Maharashtra</span>
+                    <span class="text-cyan-500/60">•</span>
+                    <span>CDAC Sunbeam Pune Alumnus</span>
+                </div>
+
+                <!-- Main Heading -->
+                <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-none">
+                    HI, I'M <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500 glow-text">ADARSH WANKAR</span>
+                </h1>
+
+                <!-- Dynamic Typing Subheading -->
+                <div class="text-xl sm:text-2xl font-semibold text-gray-300 h-10 flex items-center justify-center md:justify-start">
+                    <span class="text-cyan-400 mr-2">&gt;</span>
+                    <span id="typingText" class="typing-cursor text-cyan-300 font-mono"></span>
+                </div>
+
+                <!-- Bio Summary -->
+                <p class="text-gray-400 text-base sm:text-lg max-w-2xl leading-relaxed">
+                    Electronics & Telecommunication graduate (2025) who completed PG Diploma in Mobile Computing (DMC) from Sunbeam Institute of Information Technology, Pune (CDAC). Specialized in Java, Spring Boot REST APIs, Android & Kotlin development, and full-stack web applications.
+                </p>
+
+                <!-- Hero Action Buttons -->
+                <div class="flex flex-wrap gap-4 justify-center md:justify-start pt-4">
+                    <button onclick="scrollToSection('projects')" class="px-8 py-3.5 bg-gradient-to-r from-cyan-500 to-blue-600 text-black font-bold rounded-full hover:from-cyan-400 hover:to-blue-500 shadow-[0_0_25px_rgba(0,240,255,0.4)] transition-all duration-300 transform hover:-translate-y-1">
+                        Explore Projects
+                    </button>
+                    <button onclick="openContactModal()" class="px-8 py-3.5 border-2 border-cyan-500/50 text-cyan-300 font-bold rounded-full hover:bg-cyan-500/10 hover:border-cyan-400 transition-all duration-300 transform hover:-translate-y-1">
+                        Get In Touch
+                    </button>
+                </div>
+
+                <!-- Contact Fast Links -->
+                <div class="pt-6 border-t border-gray-800/80 flex flex-wrap items-center justify-center md:justify-start gap-4 text-xs text-gray-400">
+                    <span class="font-mono text-cyan-400/70">QUICK CONNECT:</span>
+                    <button onclick="copyToClipboard('744-821-3364', 'Phone')" class="hover:text-cyan-300 flex items-center gap-1 font-mono">
+                        <span>📞</span> +91 744-821-3364
+                    </button>
+                    <button onclick="copyToClipboard('adiwankar007@gmail.com', 'Email')" class="hover:text-cyan-300 flex items-center gap-1 font-mono">
+                        <span>✉️</span> adiwankar007@gmail.com
+                    </button>
+                </div>
+            </div>
+
+            <!-- Hero Right Avatar Visual -->
+            <div class="md:col-span-5 flex justify-center">
+                <div class="relative group">
+                    <!-- Background Glow backdrop -->
+                    <div class="absolute -inset-4 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-full blur-2xl opacity-40 group-hover:opacity-75 transition-opacity duration-500"></div>
+                    
+                    <!-- Circular Halo Avatar Container -->
+                    <div class="avatar-ring w-64 h-64 sm:w-80 sm:h-80 relative z-10 floating shadow-2xl">
+                        <img src="assets/avatar.jpg" alt="Adarsh Wankar Avatar" class="w-full h-full object-cover rounded-full border-4 border-[#050811] shadow-inner">
+                    </div>
+
+                    <!-- Floating Badge 1 -->
+                    <div class="absolute -bottom-4 -left-4 bg-[#0d1424]/90 border border-cyan-500/40 backdrop-blur-md px-4 py-2 rounded-xl shadow-xl z-20 flex items-center gap-3">
+                        <div class="text-2xl">☕</div>
+                        <div>
+                            <div class="text-xs text-gray-400">Backend Specialization</div>
+                            <div class="text-xs font-bold text-cyan-300">Java & Spring Boot</div>
+                        </div>
+                    </div>
+
+                    <!-- Floating Badge 2 -->
+                    <div class="absolute -top-4 -right-4 bg-[#0d1424]/90 border border-purple-500/40 backdrop-blur-md px-4 py-2 rounded-xl shadow-xl z-20 flex items-center gap-3">
+                        <div class="text-2xl">📱</div>
+                        <div>
+                            <div class="text-xs text-gray-400">Mobile Diploma</div>
+                            <div class="text-xs font-bold text-purple-300">CDAC Sunbeam DMC</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 px-6 relative z-10 border-t border-cyan-500/10">
+        <div class="max-w-6xl mx-auto">
+            <!-- Section Header -->
+            <div class="text-center mb-16 space-y-4">
+                <h2 class="text-3xl sm:text-5xl font-black tracking-wider glow-text">PROFESSIONAL SUMMARY</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-cyan-500 to-blue-600 mx-auto rounded-full"></div>
+                <p class="text-gray-400 max-w-xl mx-auto text-sm sm:text-base">
+                    Building robust backend microservices, Android applications, and scalable full-stack web software.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-12 gap-8 items-stretch">
+                <!-- Left Details Box -->
+                <div class="md:col-span-7 glass-card rounded-2xl p-8 space-y-6 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <h3 class="text-2xl font-bold text-cyan-300 flex items-center gap-3">
+                            <span>🚀</span> Engineering & Development Expertise
+                        </h3>
+                        <p class="text-gray-300 leading-relaxed text-base">
+                            Electronics & Telecommunication Engineering graduate (2025) who completed PG Diploma in Mobile Computing (DMC) at <strong class="text-cyan-300">Sunbeam Institute of Information Technology, Pune (CDAC)</strong>. I possess specialized hands-on experience across <strong class="text-cyan-300">Java (Core & OOP), Kotlin, Python, Spring Boot, MySQL, and full-stack web development</strong>.
+                        </p>
+                        <p class="text-gray-400 leading-relaxed text-sm">
+                            Proven ability to design REST APIs, handle JWT security and role-based access control, structure relational database schemas, and optimize frontend web UIs. Demonstrated leadership through organizing technical workshops for 100+ participants and captaining university teams.
+                        </p>
+                    </div>
+
+                    <!-- Highlight Grid -->
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-4 border-t border-gray-800">
+                        <div class="bg-gray-900/60 p-4 rounded-xl border border-cyan-500/20 text-center">
+                            <div class="text-2xl font-bold text-cyan-400 brand-font">4+</div>
+                            <div class="text-xs text-gray-400 mt-1">End-to-End Projects</div>
+                        </div>
+                        <div class="bg-gray-900/60 p-4 rounded-xl border border-cyan-500/20 text-center">
+                            <div class="text-2xl font-bold text-cyan-400 brand-font">CDAC</div>
+                            <div class="text-xs text-gray-400 mt-1">DMC Mobile Computing</div>
+                        </div>
+                        <div class="bg-gray-900/60 p-4 rounded-xl border border-cyan-500/20 text-center col-span-2 sm:col-span-1">
+                            <div class="text-2xl font-bold text-cyan-400 brand-font">236</div>
+                            <div class="text-xs text-gray-400 mt-1">GATE Qualified Score</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Quick Info Card -->
+                <div class="md:col-span-5 glass-card rounded-2xl p-8 space-y-6 flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-2xl font-bold text-cyan-300 mb-6 flex items-center gap-3">
+                            <span>📍</span> Quick Profile
+                        </h3>
+                        
+                        <div class="space-y-4 text-sm text-gray-300">
+                            <div class="flex justify-between border-b border-gray-800 pb-2">
+                                <span class="text-gray-400">Location</span>
+                                <span class="font-semibold text-white">Chandrapur / Pune, MH</span>
+                            </div>
+                            <div class="flex justify-between border-b border-gray-800 pb-2">
+                                <span class="text-gray-400">PG Diploma</span>
+                                <span class="font-semibold text-cyan-400">CDAC Sunbeam Pune (Completed)</span>
+                            </div>
+                            <div class="flex justify-between border-b border-gray-800 pb-2">
+                                <span class="text-gray-400">B.Tech Degree</span>
+                                <span class="font-semibold text-white">SGGSIE&T, Nanded (2025)</span>
+                            </div>
+                            <div class="flex justify-between border-b border-gray-800 pb-2">
+                                <span class="text-gray-400">Languages</span>
+                                <span class="font-semibold text-white">Java, Kotlin, Python, JS</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Button -->
+                    <div class="pt-6 border-t border-gray-800 flex gap-3">
+                        <button onclick="copyToClipboard('744-821-3364', 'Phone Number')" class="flex-1 py-3 bg-gray-900 hover:bg-gray-800 border border-cyan-500/40 text-cyan-300 font-bold rounded-xl text-xs flex items-center justify-center gap-2 transition-all">
+                            <span>📞</span> Copy Phone
+                        </button>
+                        <button onclick="copyToClipboard('adiwankar007@gmail.com', 'Email Address')" class="flex-1 py-3 bg-cyan-500 hover:bg-cyan-400 text-black font-bold rounded-xl text-xs flex items-center justify-center gap-2 transition-all shadow-md">
+                            <span>✉️</span> Copy Email
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-24 px-6 relative z-10 bg-gray-950/40 border-t border-cyan-500/10">
+        <div class="max-w-6xl mx-auto">
+            <!-- Section Title -->
+            <div class="text-center mb-12 space-y-4">
+                <h2 class="text-3xl sm:text-5xl font-black tracking-wider glow-text">FEATURED PROJECTS</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-cyan-500 to-blue-600 mx-auto rounded-full"></div>
+                <p class="text-gray-400 max-w-xl mx-auto text-sm sm:text-base">
+                    End-to-end engineering projects spanning Spring Boot backends, NLP text summarization, financial tracking, and IoT hardware telemetry.
+                </p>
+
+                <!-- Filter Controls -->
+                <div class="flex flex-wrap justify-center gap-3 pt-6">
+                    <button class="filter-btn active px-5 py-2 rounded-full text-xs font-bold bg-cyan-500 text-black glow transition-all" data-filter="all">All Projects</button>
+                    <button class="filter-btn px-5 py-2 rounded-full text-xs font-bold border border-cyan-500/30 text-cyan-300 hover:border-cyan-400 transition-all" data-filter="java">Java & Backend</button>
+                    <button class="filter-btn px-5 py-2 rounded-full text-xs font-bold border border-cyan-500/30 text-cyan-300 hover:border-cyan-400 transition-all" data-filter="ai-ml">AI & NLP</button>
+                    <button class="filter-btn px-5 py-2 rounded-full text-xs font-bold border border-cyan-500/30 text-cyan-300 hover:border-cyan-400 transition-all" data-filter="web">Web Apps</button>
+                    <button class="filter-btn px-5 py-2 rounded-full text-xs font-bold border border-cyan-500/30 text-cyan-300 hover:border-cyan-400 transition-all" data-filter="iot">IoT / Hardware</button>
+                </div>
+            </div>
+
+            <!-- Projects Grid -->
+            <div class="grid md:grid-cols-2 gap-8">
+                
+                <!-- Project Card 1: Sales & Inventory Management -->
+                <div class="project-item glass-card rounded-2xl overflow-hidden flex flex-col justify-between" data-category="java">
+                    <div>
+                        <!-- Image Container -->
+                        <div class="relative h-56 overflow-hidden group">
+                            <img src="assets/sales_inventory.jpg" alt="Sales & Inventory Dashboard" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#0d1424] via-transparent to-transparent opacity-80"></div>
+                            <span class="absolute top-3 right-3 px-3 py-1 bg-cyan-950/90 text-cyan-300 border border-cyan-500/40 rounded-full text-[10px] font-bold uppercase tracking-wider">
+                                Backend (Java / Spring Boot) • 2026
+                            </span>
+                        </div>
+
+                        <!-- Card Body -->
+                        <div class="p-6 space-y-3">
+                            <h3 class="text-xl font-bold text-cyan-300 group-hover:text-cyan-200 transition-colors">
+                                Sales & Inventory Management Dashboard
+                            </h3>
+                            <p class="text-gray-400 text-sm leading-relaxed">
+                                Built a Java Spring Boot backend exposing REST APIs for product, sales, and inventory operations backed by MySQL. Implemented JWT authentication and Spring Security Role-Based Access Control (Admin, Manager, Staff).
+                            </p>
+
+                            <!-- Tech Stack Pills -->
+                            <div class="flex flex-wrap gap-2 pt-2">
+                                <span class="px-2.5 py-0.5 bg-cyan-950 text-cyan-300 rounded text-xs font-semibold">Java Spring Boot</span>
+                                <span class="px-2.5 py-0.5 bg-blue-950 text-blue-300 rounded text-xs font-semibold">MySQL</span>
+                                <span class="px-2.5 py-0.5 bg-purple-950 text-purple-300 rounded text-xs font-semibold">JWT / Spring Security</span>
+                                <span class="px-2.5 py-0.5 bg-gray-900 text-gray-300 rounded text-xs font-semibold">REST APIs</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Button -->
+                    <div class="p-6 pt-0">
+                        <button onclick="openProjectModal('sales-inventory')" class="w-full py-2.5 border border-cyan-500/40 hover:border-cyan-400 hover:bg-cyan-500 hover:text-black font-bold text-cyan-300 text-sm rounded-xl transition-all duration-300 flex items-center justify-center gap-2">
+                            <span>Inspect Backend Architecture</span>
+                            <span>&rarr;</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Project Card 2: AI Legal Summarizer -->
+                <div class="project-item glass-card rounded-2xl overflow-hidden flex flex-col justify-between" data-category="ai-ml">
+                    <div>
+                        <!-- Image Container -->
+                        <div class="relative h-56 overflow-hidden group">
+                            <img src="assets/ai_legal.jpg" alt="AI Legal Summarizer" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#0d1424] via-transparent to-transparent opacity-80"></div>
+                            <span class="absolute top-3 right-3 px-3 py-1 bg-purple-950/90 text-purple-300 border border-purple-500/40 rounded-full text-[10px] font-bold uppercase tracking-wider">
+                                AI / NLP • Jan 2025 – May 2025
+                            </span>
+                        </div>
+
+                        <!-- Card Body -->
+                        <div class="p-6 space-y-3">
+                            <h3 class="text-xl font-bold text-cyan-300 group-hover:text-cyan-200 transition-colors">
+                                AI-Based Legal Document Summarizer
+                            </h3>
+                            <p class="text-gray-400 text-sm leading-relaxed">
+                                Built an NLP-based system to automatically summarize lengthy legal documents, extracting key points and reducing redundancy. Applied semantic understanding and sentence-ranking models.
+                            </p>
+
+                            <!-- Tech Stack Pills -->
+                            <div class="flex flex-wrap gap-2 pt-2">
+                                <span class="px-2.5 py-0.5 bg-purple-950 text-purple-300 rounded text-xs font-semibold">Python</span>
+                                <span class="px-2.5 py-0.5 bg-blue-950 text-blue-300 rounded text-xs font-semibold">Flask</span>
+                                <span class="px-2.5 py-0.5 bg-cyan-950 text-cyan-300 rounded text-xs font-semibold">NLP / Sentence-Ranking</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Button -->
+                    <div class="p-6 pt-0">
+                        <button onclick="openProjectModal('ai-legal')" class="w-full py-2.5 border border-cyan-500/40 hover:border-cyan-400 hover:bg-cyan-500 hover:text-black font-bold text-cyan-300 text-sm rounded-xl transition-all duration-300 flex items-center justify-center gap-2">
+                            <span>Inspect AI Details</span>
+                            <span>&rarr;</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Project Card 3: Expense Tracker -->
+                <div class="project-item glass-card rounded-2xl overflow-hidden flex flex-col justify-between" data-category="web">
+                    <div>
+                        <!-- Image Container -->
+                        <div class="relative h-56 overflow-hidden group">
+                            <img src="assets/expense_tracker.jpg" alt="Expense Tracker App" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#0d1424] via-transparent to-transparent opacity-80"></div>
+                            <span class="absolute top-3 right-3 px-3 py-1 bg-green-950/90 text-green-300 border border-green-500/40 rounded-full text-[10px] font-bold uppercase tracking-wider">
+                                Web Application • Aug 2024 – Oct 2024
+                            </span>
+                        </div>
+
+                        <!-- Card Body -->
+                        <div class="p-6 space-y-3">
+                            <h3 class="text-xl font-bold text-cyan-300 group-hover:text-cyan-200 transition-colors">
+                                Expense Tracker Application
+                            </h3>
+                            <p class="text-gray-400 text-sm leading-relaxed">
+                                Built a full-stack web application for expense tracking, budget setting, and spending visualization, improving budgeting efficiency by 30%. Implemented secure authentication and REST APIs.
+                            </p>
+
+                            <!-- Tech Stack Pills -->
+                            <div class="flex flex-wrap gap-2 pt-2">
+                                <span class="px-2.5 py-0.5 bg-green-950 text-green-300 rounded text-xs font-semibold">Node.js / Express</span>
+                                <span class="px-2.5 py-0.5 bg-teal-950 text-teal-300 rounded text-xs font-semibold">JavaScript</span>
+                                <span class="px-2.5 py-0.5 bg-blue-950 text-blue-300 rounded text-xs font-semibold">REST API</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Button -->
+                    <div class="p-6 pt-0">
+                        <button onclick="openProjectModal('expense-tracker')" class="w-full py-2.5 border border-cyan-500/40 hover:border-cyan-400 hover:bg-cyan-500 hover:text-black font-bold text-cyan-300 text-sm rounded-xl transition-all duration-300 flex items-center justify-center gap-2">
+                            <span>Inspect Web Details</span>
+                            <span>&rarr;</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Project Card 4: GSM Fire Alarm -->
+                <div class="project-item glass-card rounded-2xl overflow-hidden flex flex-col justify-between" data-category="iot">
+                    <div>
+                        <!-- Image Container -->
+                        <div class="relative h-56 overflow-hidden group">
+                            <img src="assets/gsm_fire.jpg" alt="GSM Fire Alarm System" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#0d1424] via-transparent to-transparent opacity-80"></div>
+                            <span class="absolute top-3 right-3 px-3 py-1 bg-red-950/90 text-red-300 border border-red-500/40 rounded-full text-[10px] font-bold uppercase tracking-wider">
+                                IoT & Hardware • Mar 2022 – May 2022
+                            </span>
+                        </div>
+
+                        <!-- Card Body -->
+                        <div class="p-6 space-y-3">
+                            <h3 class="text-xl font-bold text-cyan-300 group-hover:text-cyan-200 transition-colors">
+                                GSM-Based Fire Alarm System
+                            </h3>
+                            <p class="text-gray-400 text-sm leading-relaxed">
+                                Developed an embedded system to monitor smoke and temperature levels continuously, triggering automated location SMS alerts to predefined contacts when safety thresholds are exceeded.
+                            </p>
+
+                            <!-- Tech Stack Pills -->
+                            <div class="flex flex-wrap gap-2 pt-2">
+                                <span class="px-2.5 py-0.5 bg-red-950 text-red-300 rounded text-xs font-semibold">Assembly</span>
+                                <span class="px-2.5 py-0.5 bg-orange-950 text-orange-300 rounded text-xs font-semibold">Embedded C</span>
+                                <span class="px-2.5 py-0.5 bg-yellow-950 text-yellow-300 rounded text-xs font-semibold">GSM Telemetry</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Button -->
+                    <div class="p-6 pt-0">
+                        <button onclick="openProjectModal('gsm-fire')" class="w-full py-2.5 border border-cyan-500/40 hover:border-cyan-400 hover:bg-cyan-500 hover:text-black font-bold text-cyan-300 text-sm rounded-xl transition-all duration-300 flex items-center justify-center gap-2">
+                            <span>Inspect Embedded Details</span>
+                            <span>&rarr;</span>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Skills Section -->
+    <section id="skills" class="py-24 px-6 relative z-10 border-t border-cyan-500/10">
+        <div class="max-w-6xl mx-auto">
+            <!-- Section Header -->
+            <div class="text-center mb-16 space-y-4">
+                <h2 class="text-3xl sm:text-5xl font-black tracking-wider glow-text">TECHNICAL SKILLS</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-cyan-500 to-blue-600 mx-auto rounded-full"></div>
+                <p class="text-gray-400 max-w-xl mx-auto text-sm sm:text-base">
+                    Comprehensive skill taxonomy compiled directly from engineering coursework and end-to-end projects.
+                </p>
+            </div>
+
+            <!-- Skills Grid Matrix -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Category 1: Programming Languages -->
+                <div class="glass-card rounded-2xl p-6 space-y-4">
+                    <div class="flex items-center gap-3 border-b border-gray-800 pb-3">
+                        <span class="text-2xl">💻</span>
+                        <h3 class="text-lg font-bold text-cyan-300">Languages</h3>
+                    </div>
+                    <div class="space-y-3 text-sm">
+                        <div class="flex justify-between items-center bg-gray-900/60 p-2.5 rounded-lg border border-cyan-500/20">
+                            <span class="text-gray-200">Java (Core & OOP)</span>
+                            <span class="text-xs text-cyan-400 font-mono font-semibold">Primary</span>
+                        </div>
+                        <div class="flex justify-between items-center bg-gray-900/60 p-2.5 rounded-lg border border-cyan-500/20">
+                            <span class="text-gray-200">Kotlin</span>
+                            <span class="text-xs text-cyan-400 font-mono font-semibold">Android / CDAC</span>
+                        </div>
+                        <div class="flex justify-between items-center bg-gray-900/60 p-2.5 rounded-lg border border-cyan-500/20">
+                            <span class="text-gray-200">Python</span>
+                            <span class="text-xs text-cyan-400 font-mono font-semibold">NLP / Machine Learning</span>
+                        </div>
+                        <div class="flex justify-between items-center bg-gray-900/60 p-2.5 rounded-lg border border-cyan-500/20">
+                            <span class="text-gray-200">JavaScript (ES6+)</span>
+                            <span class="text-xs text-cyan-400 font-mono font-semibold">Full Stack</span>
+                        </div>
+                        <div class="flex justify-between items-center bg-gray-900/60 p-2.5 rounded-lg border border-gray-800">
+                            <span class="text-gray-400">Swift & C/C++</span>
+                            <span class="text-xs text-gray-500 font-mono">Fundamentals</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category 2: Backend & Frameworks -->
+                <div class="glass-card rounded-2xl p-6 space-y-4">
+                    <div class="flex items-center gap-3 border-b border-gray-800 pb-3">
+                        <span class="text-2xl">⚡</span>
+                        <h3 class="text-lg font-bold text-cyan-300">Backend & Security</h3>
+                    </div>
+                    <div class="space-y-3 text-sm">
+                        <div class="flex justify-between items-center bg-gray-900/60 p-2.5 rounded-lg border border-cyan-500/20">
+                            <span class="text-gray-200">Spring Boot</span>
+                            <span class="text-xs text-cyan-400 font-mono font-semibold">REST Microservices</span>
+                        </div>
+                        <div class="flex justify-between items-center bg-gray-900/60 p-2.5 rounded-lg border border-cyan-500/20">
+                            <span class="text-gray-200">Spring Security & JWT</span>
+                            <span class="text-xs text-cyan-400 font-mono font-semibold">RBAC Auth</span>
+                        </div>
+                        <div class="flex justify-between items-center bg-gray-900/60 p-2.5 rounded-lg border border-cyan-500/20">
+                            <span class="text-gray-200">Spring Data JPA / Hibernate</span>
+                            <span class="text-xs text-cyan-400 font-mono font-semibold">ORM Layer</span>
+                        </div>
+                        <div class="flex justify-between items-center bg-gray-900/60 p-2.5 rounded-lg border border-cyan-500/20">
+                            <span class="text-gray-200">Node.js & Express</span>
+                            <span class="text-xs text-cyan-400 font-mono font-semibold">Web APIs</span>
+                        </div>
+                        <div class="flex justify-between items-center bg-gray-900/60 p-2.5 rounded-lg border border-gray-800">
+                            <span class="text-gray-400">MySQL & Relational Databases</span>
+                            <span class="text-xs text-gray-500 font-mono">SQL Schema Design</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category 3: Mobile & Frontend -->
+                <div class="glass-card rounded-2xl p-6 space-y-4">
+                    <div class="flex items-center gap-3 border-b border-gray-800 pb-3">
+                        <span class="text-2xl">📱</span>
+                        <h3 class="text-lg font-bold text-cyan-300">Mobile & Frontend</h3>
+                    </div>
+                    <div class="space-y-3 text-sm">
+                        <div class="flex justify-between items-center bg-gray-900/60 p-2.5 rounded-lg border border-cyan-500/20">
+                            <span class="text-gray-200">Android Studio & SDK</span>
+                            <span class="text-xs text-cyan-400 font-mono font-semibold">Native Apps</span>
+                        </div>
+                        <div class="flex justify-between items-center bg-gray-900/60 p-2.5 rounded-lg border border-cyan-500/20">
+                            <span class="text-gray-200">CDAC DMC Diploma</span>
+                            <span class="text-xs text-cyan-400 font-mono font-semibold">In Progress</span>
+                        </div>
+                        <div class="flex justify-between items-center bg-gray-900/60 p-2.5 rounded-lg border border-cyan-500/20">
+                            <span class="text-gray-200">React.js & Tailwind CSS</span>
+                            <span class="text-xs text-cyan-400 font-mono font-semibold">Modern UIs</span>
+                        </div>
+                        <div class="flex justify-between items-center bg-gray-900/60 p-2.5 rounded-lg border border-gray-800">
+                            <span class="text-gray-400">React Native / Cross-Platform</span>
+                            <span class="text-xs text-gray-500 font-mono">Basics</span>
+                        </div>
+                        <div class="flex justify-between items-center bg-gray-900/60 p-2.5 rounded-lg border border-gray-800">
+                            <span class="text-gray-400">HTML5 / CSS3</span>
+                            <span class="text-xs text-gray-500 font-mono">Responsive Layouts</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category 4: Tools & Platforms -->
+                <div class="glass-card rounded-2xl p-6 space-y-4">
+                    <div class="flex items-center gap-3 border-b border-gray-800 pb-3">
+                        <span class="text-2xl">🛠️</span>
+                        <h3 class="text-lg font-bold text-cyan-300">Tools & Environments</h3>
+                    </div>
+                    <div class="space-y-2 text-xs text-gray-300">
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1.5 bg-gray-900 border border-cyan-500/30 rounded-lg">Git & GitHub</span>
+                            <span class="px-3 py-1.5 bg-gray-900 border border-cyan-500/30 rounded-lg">Postman API Tester</span>
+                            <span class="px-3 py-1.5 bg-gray-900 border border-cyan-500/30 rounded-lg">VS Code</span>
+                            <span class="px-3 py-1.5 bg-gray-900 border border-cyan-500/30 rounded-lg">Eclipse IDE</span>
+                            <span class="px-3 py-1.5 bg-gray-900 border border-cyan-500/30 rounded-lg">Apache Maven</span>
+                            <span class="px-3 py-1.5 bg-gray-900 border border-cyan-500/30 rounded-lg">Firebase</span>
+                            <span class="px-3 py-1.5 bg-gray-900 border border-cyan-500/30 rounded-lg">Google Cloud Platform</span>
+                            <span class="px-3 py-1.5 bg-gray-900 border border-cyan-500/30 rounded-lg">Jupyter / Google Colab</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category 5: Architecture & Advanced -->
+                <div class="glass-card rounded-2xl p-6 space-y-4 md:col-span-2 lg:col-span-2">
+                    <div class="flex items-center gap-3 border-b border-gray-800 pb-3">
+                        <span class="text-2xl">📐</span>
+                        <h3 class="text-lg font-bold text-cyan-300">Architecture, ML & Certifications</h3>
+                    </div>
+                    <div class="grid sm:grid-cols-2 gap-4 text-xs">
+                        <div class="bg-gray-900/60 p-3 rounded-xl border border-gray-800 space-y-1">
+                            <div class="font-bold text-cyan-300">System Design & Security</div>
+                            <p class="text-gray-400">Object-Oriented Design, JWT Role-Based Access Control, Normalized SQL Relational Modeling.</p>
+                        </div>
+                        <div class="bg-gray-900/60 p-3 rounded-xl border border-gray-800 space-y-1">
+                            <div class="font-bold text-cyan-300">Certifications</div>
+                            <p class="text-gray-400">CodeChef Certified (Java, C++, Python, Kotlin) • Google Arcade Cloud (GCP 2023) • MathWorks Machine Learning.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="py-24 px-6 relative z-10 bg-gray-950/40 border-t border-cyan-500/10">
+        <div class="max-w-5xl mx-auto">
+            <!-- Section Header -->
+            <div class="text-center mb-16 space-y-4">
+                <h2 class="text-3xl sm:text-5xl font-black tracking-wider glow-text">EDUCATION & ACADEMICS</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-cyan-500 to-blue-600 mx-auto rounded-full"></div>
+                <p class="text-gray-400 max-w-xl mx-auto text-sm sm:text-base">
+                    Academic qualifications and professional diploma programs.
+                </p>
+            </div>
+
+            <!-- Timeline -->
+            <div class="space-y-8 relative before:absolute before:inset-0 before:left-3 sm:before:left-1/2 before:-ml-0.5 before:w-0.5 before:bg-gradient-to-b before:from-cyan-500 before:via-blue-500 before:to-purple-600">
+                
+                <!-- Education Item 1 -->
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                    <!-- Icon -->
+                    <div class="flex items-center justify-center w-8 h-8 rounded-full bg-[#050811] border-2 border-cyan-400 text-cyan-300 shadow-[0_0_15px_#00f0ff] z-10 shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+                        1
+                    </div>
+                    <!-- Content Card -->
+                    <div class="w-[calc(100%-2.5rem)] md:w-[calc(50%-2.5rem)] glass-card p-6 rounded-2xl space-y-2 border-cyan-500/30">
+                        <div class="flex justify-between items-center text-xs font-mono text-cyan-400">
+                            <span>COMPLETED (2025 – 2026)</span>
+                            <span class="px-2.5 py-0.5 bg-cyan-950 border border-cyan-500/40 rounded-full font-bold">PG DIPLOMA</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">PG Diploma in Mobile Computing (DMC)</h3>
+                        <p class="text-sm font-semibold text-cyan-300">Sunbeam Institute of Information Technology, Pune (CDAC)</p>
+                        <p class="text-xs text-gray-400 leading-relaxed">
+                            Specialized advanced diploma in Android application development, Kotlin, Swift/iOS basics, Java backend APIs, mobile architecture, and software deployment.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Education Item 2 -->
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                    <!-- Icon -->
+                    <div class="flex items-center justify-center w-8 h-8 rounded-full bg-[#050811] border-2 border-blue-400 text-blue-300 shadow-[0_0_15px_#0070f3] z-10 shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+                        2
+                    </div>
+                    <!-- Content Card -->
+                    <div class="w-[calc(100%-2.5rem)] md:w-[calc(50%-2.5rem)] glass-card p-6 rounded-2xl space-y-2 border-blue-500/30">
+                        <div class="flex justify-between items-center text-xs font-mono text-blue-400">
+                            <span>2021 – 2025</span>
+                            <span class="px-2.5 py-0.5 bg-blue-950 border border-blue-500/40 rounded-full font-bold">DEGREE</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">B.Tech in Electronics & Telecommunication Engineering</h3>
+                        <p class="text-sm font-semibold text-blue-300">Shri Guru Gobind Singhji Institute of Engineering & Technology (SGGSIE&T), Nanded</p>
+                        <p class="text-xs text-gray-400 leading-relaxed">
+                            Full 4-year engineering curriculum covering core data structures, algorithms, digital signal processing, embedded microcontrollers, and software systems.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Education Item 3 -->
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                    <!-- Icon -->
+                    <div class="flex items-center justify-center w-8 h-8 rounded-full bg-[#050811] border-2 border-purple-400 text-purple-300 shadow-[0_0_15px_#7928ca] z-10 shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+                        3
+                    </div>
+                    <!-- Content Card -->
+                    <div class="w-[calc(100%-2.5rem)] md:w-[calc(50%-2.5rem)] glass-card p-6 rounded-2xl space-y-2 border-purple-500/30">
+                        <div class="flex justify-between items-center text-xs font-mono text-purple-400">
+                            <span>2020 – 2021</span>
+                            <span class="px-2.5 py-0.5 bg-purple-950 border border-purple-500/40 rounded-full font-bold">HSC CLASS XII</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Higher Secondary School (Computer Science)</h3>
+                        <p class="text-sm font-semibold text-purple-300">Vidya Niketan High School</p>
+                        <p class="text-xs text-gray-400 leading-relaxed">
+                            Foundational education focusing on Computer Science fundamentals, object-oriented principles, logic building, and physical sciences.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements & Leadership Section -->
+    <section id="achievements" class="py-24 px-6 relative z-10 border-t border-cyan-500/10">
+        <div class="max-w-5xl mx-auto">
+            <!-- Section Header -->
+            <div class="text-center mb-16 space-y-4">
+                <h2 class="text-3xl sm:text-5xl font-black tracking-wider glow-text">ACHIEVEMENTS & LEADERSHIP</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-cyan-500 to-blue-600 mx-auto rounded-full"></div>
+                <p class="text-gray-400 max-w-xl mx-auto text-sm sm:text-base">
+                    Demonstrated leadership, technical event coordination, and recognized analytical aptitude.
+                </p>
+            </div>
+
+            <!-- Achievement Cards -->
+            <div class="grid md:grid-cols-3 gap-6">
+                
+                <!-- Achievement 1 -->
+                <div class="glass-card p-6 rounded-2xl space-y-4 border-blue-500/30">
+                    <div class="w-12 h-12 rounded-xl bg-blue-950 border border-blue-500/40 flex items-center justify-center text-2xl">
+                        👥
+                    </div>
+                    <div class="space-y-1">
+                        <div class="text-xs font-mono text-blue-400 uppercase font-bold">ORGANIZATIONAL LEADERSHIP</div>
+                        <h3 class="text-xl font-bold text-white">Technical Coordinator</h3>
+                        <p class="text-sm font-semibold text-blue-300">SGGSIE&T Departmental Club</p>
+                    </div>
+                    <p class="text-xs text-gray-300 leading-relaxed">
+                        Served as Technical Coordinator for multiple tech events and an active member of the technical departmental club at SGGSIE&T, organizing workshops and online meets for 100+ participants.
+                    </p>
+                </div>
+
+                <!-- Achievement 2 -->
+                <div class="glass-card p-6 rounded-2xl space-y-4 border-purple-500/30">
+                    <div class="w-12 h-12 rounded-xl bg-purple-950 border border-purple-500/40 flex items-center justify-center text-2xl">
+                        🏆
+                    </div>
+                    <div class="space-y-1">
+                        <div class="text-xs font-mono text-purple-400 uppercase font-bold">SPORTS & TEAMWORK</div>
+                        <h3 class="text-xl font-bold text-white">Cricket Team Leadership</h3>
+                        <p class="text-sm font-semibold text-purple-300">3 Consecutive Championship Wins</p>
+                    </div>
+                    <p class="text-xs text-gray-300 leading-relaxed">
+                        Helped lead the university cricket team alongside senior players across tournaments, guiding the team to 3 consecutive championship wins — demonstrating leadership and teamwork under pressure.
+                    </p>
+                </div>
+
+                <!-- Achievement 3 -->
+                <div class="glass-card p-6 rounded-2xl space-y-4 border-cyan-500/30">
+                    <div class="w-12 h-12 rounded-xl bg-cyan-950 border border-cyan-500/40 flex items-center justify-center text-2xl">
+                        🎯
+                    </div>
+                    <div class="space-y-1">
+                        <div class="text-xs font-mono text-cyan-400 uppercase font-bold">NATIONAL EXAMINATION</div>
+                        <h3 class="text-xl font-bold text-white">GATE Qualified</h3>
+                        <p class="text-sm font-semibold text-cyan-300">Score: 236</p>
+                    </div>
+                    <p class="text-xs text-gray-300 leading-relaxed">
+                        GATE qualified, reflecting strong analytical, mathematical, and technical problem-solving ability.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 px-6 relative z-10 bg-gray-950/60 border-t border-cyan-500/10">
+        <div class="max-w-5xl mx-auto text-center space-y-12">
+            <!-- Section Title -->
+            <div class="space-y-4">
+                <h2 class="text-3xl sm:text-5xl font-black tracking-wider glow-text">LET'S CONNECT</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-cyan-500 to-blue-600 mx-auto rounded-full"></div>
+                <p class="text-gray-400 max-w-xl mx-auto text-sm sm:text-base">
+                    Looking for a dedicated Java Backend, Android, or Full-Stack Software Developer? Reach out directly!
+                </p>
+            </div>
+
+            <!-- Contact Cards Grid -->
+            <div class="grid md:grid-cols-4 gap-6">
+                
+                <!-- Email Card -->
+                <div onclick="copyToClipboard('adiwankar007@gmail.com', 'Email')" class="glass-card p-6 rounded-2xl space-y-3 cursor-pointer group hover:border-cyan-400">
+                    <div class="w-12 h-12 mx-auto rounded-xl bg-cyan-950/80 border border-cyan-500/30 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
+                        📧
+                    </div>
+                    <h3 class="text-base font-bold text-cyan-300">Email</h3>
+                    <p class="text-xs text-gray-300 font-mono break-all">adiwankar007@gmail.com</p>
+                    <span class="text-[10px] text-cyan-400 uppercase tracking-widest font-bold block pt-2 group-hover:underline">Copy Email</span>
+                </div>
+
+                <!-- Phone Card -->
+                <div onclick="copyToClipboard('744-821-3364', 'Phone Number')" class="glass-card p-6 rounded-2xl space-y-3 cursor-pointer group hover:border-green-400">
+                    <div class="w-12 h-12 mx-auto rounded-xl bg-green-950/80 border border-green-500/30 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
+                        📞
+                    </div>
+                    <h3 class="text-base font-bold text-green-300">Phone</h3>
+                    <p class="text-xs text-gray-300 font-mono">+91 744-821-3364</p>
+                    <span class="text-[10px] text-green-400 uppercase tracking-widest font-bold block pt-2 group-hover:underline">Copy Phone</span>
+                </div>
+
+                <!-- LinkedIn Card -->
+                <a href="https://linkedin.com/in/adarsh-wankar" target="_blank" rel="noopener noreferrer" class="glass-card p-6 rounded-2xl space-y-3 block group hover:border-blue-400">
+                    <div class="w-12 h-12 mx-auto rounded-xl bg-blue-950/80 border border-blue-500/30 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
+                        💼
+                    </div>
+                    <h3 class="text-base font-bold text-blue-300">LinkedIn</h3>
+                    <p class="text-xs text-gray-300 font-mono truncate">adarsh-wankar</p>
+                    <span class="text-[10px] text-blue-400 uppercase tracking-widest font-bold block pt-2 group-hover:underline">Visit Profile &rarr;</span>
+                </a>
+
+                <!-- GitHub Card -->
+                <a href="https://github.com/2021bec004-png/" target="_blank" rel="noopener noreferrer" class="glass-card p-6 rounded-2xl space-y-3 block group hover:border-purple-400">
+                    <div class="w-12 h-12 mx-auto rounded-xl bg-purple-950/80 border border-purple-500/30 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
+                        🐙
+                    </div>
+                    <h3 class="text-base font-bold text-purple-300">GitHub</h3>
+                    <p class="text-xs text-gray-300 font-mono truncate">2021bec004-png</p>
+                    <span class="text-[10px] text-purple-400 uppercase tracking-widest font-bold block pt-2 group-hover:underline">View Repos &rarr;</span>
+                </a>
+
+            </div>
+
+            <!-- Start Conversation CTA -->
+            <div class="pt-6">
+                <button onclick="openContactModal()" class="px-10 py-4 bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 text-black font-bold text-lg rounded-full shadow-[0_0_30px_rgba(0,240,255,0.4)] hover:shadow-[0_0_40px_rgba(0,240,255,0.7)] transition-all duration-300 transform hover:-translate-y-1">
+                    Start a Conversation 🚀
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 px-6 border-t border-cyan-500/20 bg-[#03060f] relative z-10 text-center text-xs text-gray-500 space-y-2">
+        <p class="font-mono">&copy; 2026 Adarsh Wankar. All rights reserved.</p>
+        <p class="text-gray-600">Built with HTML, CSS, JavaScript, Tailwind CSS & Antigravity AI.</p>
+    </footer>
+
+    <!-- Floating Scroll To Top Button -->
+    <button id="scrollTopBtn" onclick="scrollToTop()" class="fixed bottom-6 right-6 w-12 h-12 rounded-full bg-cyan-500 text-black font-bold text-xl shadow-[0_0_20px_rgba(0,240,255,0.5)] flex items-center justify-center transition-all duration-300 opacity-0 pointer-events-none hover:bg-cyan-400 z-40" aria-label="Scroll to Top">
+        ↑
+    </button>
+
+    <!-- Project Details Modal -->
+    <div id="projectModal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+        <div class="glass-card rounded-2xl max-w-2xl w-full p-6 sm:p-8 space-y-6 relative border-cyan-500/50 shadow-2xl my-auto">
+            <!-- Close Icon -->
+            <button onclick="closeProjectModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white p-2 rounded-lg hover:bg-gray-800 transition-colors">
+                ✕
+            </button>
+
+            <!-- Header -->
+            <div>
+                <span id="modalCategory" class="text-xs font-mono text-cyan-400 font-bold uppercase tracking-wider">Category</span>
+                <h3 id="modalTitle" class="text-2xl sm:text-3xl font-black text-white mt-1">Project Title</h3>
+            </div>
+
+            <!-- Media Preview -->
+            <div class="rounded-xl overflow-hidden h-56 bg-gray-900 border border-cyan-500/20">
+                <img id="modalImg" src="" alt="Project Preview" class="w-full h-full object-cover">
+            </div>
+
+            <!-- Tech Badges -->
+            <div id="modalTech" class="flex flex-wrap gap-2"></div>
+
+            <!-- Description -->
+            <p id="modalDesc" class="text-gray-300 text-sm sm:text-base leading-relaxed"></p>
+
+            <!-- Features -->
+            <div class="space-y-2">
+                <h4 class="text-xs font-mono text-cyan-400 uppercase font-bold tracking-wider">Key Highlights</h4>
+                <ul id="modalFeatures" class="space-y-2"></ul>
+            </div>
+
+            <!-- Footer Action -->
+            <div class="pt-4 border-t border-gray-800 flex justify-end gap-4">
+                <button onclick="closeProjectModal()" class="px-5 py-2 border border-gray-700 text-gray-300 text-sm font-bold rounded-lg hover:bg-gray-800">
+                    Close
+                </button>
+                <a id="modalGithubBtn" href="#" target="_blank" rel="noopener noreferrer" class="px-6 py-2 bg-cyan-500 text-black text-sm font-bold rounded-lg hover:bg-cyan-400 shadow-md flex items-center gap-2">
+                    <span>GitHub Repo</span> <span>&rarr;</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Form Modal -->
+    <div id="contactModal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+        <div class="glass-card rounded-2xl max-w-md w-full p-6 sm:p-8 space-y-6 relative border-cyan-500/50 shadow-2xl my-auto">
+            <!-- Close Icon -->
+            <button onclick="closeContactModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white p-2 rounded-lg hover:bg-gray-800 transition-colors">
+                ✕
+            </button>
+
+            <!-- Header -->
+            <div>
+                <h3 class="text-2xl font-bold text-cyan-300">GET IN TOUCH</h3>
+                <p class="text-xs text-gray-400 mt-1">Send a direct message to Adarsh Wankar</p>
+            </div>
+
+            <!-- Form -->
+            <form id="contactForm" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-mono text-gray-300 mb-1.5 uppercase font-semibold">Your Name</label>
+                    <input type="text" required class="w-full px-4 py-2.5 bg-gray-900/90 border border-gray-800 rounded-xl text-sm focus:border-cyan-400 focus:outline-none text-white transition-colors" placeholder="e.g. Recruiter / Collaborator">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-mono text-gray-300 mb-1.5 uppercase font-semibold">Email Address</label>
+                    <input type="email" required class="w-full px-4 py-2.5 bg-gray-900/90 border border-gray-800 rounded-xl text-sm focus:border-cyan-400 focus:outline-none text-white transition-colors" placeholder="your.name@company.com">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-mono text-gray-300 mb-1.5 uppercase font-semibold">Message</label>
+                    <textarea rows="4" required class="w-full px-4 py-2.5 bg-gray-900/90 border border-gray-800 rounded-xl text-sm focus:border-cyan-400 focus:outline-none text-white transition-colors" placeholder="Tell me about project details or hiring inquiries..."></textarea>
+                </div>
+
+                <button type="submit" class="w-full py-3.5 bg-gradient-to-r from-cyan-500 to-blue-600 text-black font-bold text-sm rounded-xl shadow-[0_0_20px_rgba(0,240,255,0.4)] hover:from-cyan-400 hover:to-blue-500 transition-all flex items-center justify-center">
+                    Send Signal 🚀
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Notification Banner -->
+    <div id="toast" class="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 bg-[#0d1424] border border-cyan-400/60 text-cyan-300 px-6 py-3 rounded-full shadow-[0_0_25px_rgba(0,240,255,0.5)] backdrop-blur-lg flex items-center gap-3 text-sm font-semibold pointer-events-none">
+        <span class="text-xl">✨</span>
+        <span id="toastMsg">Notification message</span>
+    </div>
+
+    <!-- External Script File -->
+    <script src="script.js"></script>
+</body>
+</html>
